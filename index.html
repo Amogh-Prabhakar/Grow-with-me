@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowWear - Clothing that Grows with Kids</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero a {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .hero a:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        #about {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+        }
+
+        #about h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #about p {
+            font-size: 18px;
+            color: #555;
+            text-align: justify;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        /* Features Section */
+        #features {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        #features h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+            background-color: #2980b9;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .feature-details {
+            display: none;
+            font-size: 18px;
+            color: #333;
+            background: #ecf0f1;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+        }
+
+        #testimonials h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial .author {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        /* FAQ Section */
+        #faq {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        #faq h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h3 {
+            font-size: 20px;
+            cursor: pointer;
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .faq-item h3:hover {
+            background-color: #2980b9;
+        }
+
+        .faq-item p {
+            display: none;
+            font-size: 18px;
+            color: #555;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        /* Feedback Section */
+        #feedback {
+            padding: 60px 20px;
+            background-color: #ecf0f1;
+        }
+
+        #feedback h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #feedback-form label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        #feedback-form input,
+        #feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #feedback-form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #feedback-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .feedback-message {
+            display: none;
+            font-size: 18px;
+            color: green;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>GrowWear</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Welcome to GrowWear</h2>
+        <p>Revolutionizing kids' clothing with innovation and sustainability.</p>
+        <a href="#about">Learn More</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About GrowWear</h2>
+        <p>GrowWear is a revolutionary clothing line designed to grow with your child. Using advanced adaptive fabrics, GrowWear adjusts to your child's changing size, ensuring comfort and sustainability while reducing the need for frequent replacements.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Key Features</h2>
+        <div class="features-list">
+            <div class="feature" onclick="toggleDetails('stretchable-details')">
+                <h3>Stretchable Fabrics</h3>
+                <p>Click to learn more!</p>
+                <div id="stretchable-details" class="feature-details">
+                    Our advanced stretchable fabrics adapt to your child's growth, ensuring a perfect fit at all times.
+                </div>
+            </div>
+            <div class="feature" onclick="toggleDetails('eco-friendly-details')">
+                <h3>Eco-friendly Materials</h3>
+                <p>Click to learn more!</p>
+                <div id="eco-friendly-details" class="feature-details">
+                    Made from biodegradable fibers, our materials are kind to both your child and the planet.
+                </div>
+            </div>
+            <div class="feature" onclick="toggleDetails('adjustable-design-details')">
+                <h3>Adjustable Design</h3>
+                <p>Click to learn more!</p>
+                <div id="adjustable-design-details" class="feature-details">
+                    Adjustable straps and waistbands expand to provide a comfortable fit as your child grows.
+                </div>
+            </div>
+            <div class="feature" onclick="toggleDetails('durable-details')">
+                <h3>Durable</h3>
+                <p>Click to learn more!</p>
+                <div id="durable-details" class="feature-details">
+                    Built to last, our clothing withstands wear and tear, providing value for years.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+            <p>"GrowWear has been a game-changer for my family. The clothes are durable and fit perfectly as my child grows."</p>
+            <p class="author">- Sarah, Mother of Two</p>
+        </div>
+        <div class="testimonial">
+            <p>"I love how eco-friendly GrowWear is. It’s great knowing I’m helping the planet while keeping my kids comfortable."</p>
+            <p class="author">- Rajesh, Eco-conscious Parent</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+        <!-- FAQ Section -->
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq1')">How does GrowWear adjust to my child’s size?</h3>
+        <p id="faq1" style="display:none;">GrowWear uses advanced stretchable fabrics and adjustable features to grow with your child.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq2')">Are the materials safe for sensitive skin?</h3>
+        <p id="faq2" style="display:none;">Yes, all our materials are hypoallergenic and safe for sensitive skin.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq3')">What sizes are available?</h3>
+        <p id="faq3" style="display:none;">GrowWear is designed to fit a wide range of sizes, covering ages 1 to 10 years, with adjustable features to accommodate growth.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq4')">How durable are the clothes?</h3>
+        <p id="faq4" style="display:none;">Our clothes are made with high-quality, durable fabrics that can withstand active use and frequent washing.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq5')">Are the clothes machine washable?</h3>
+        <p id="faq5" style="display:none;">Yes, all GrowWear products are machine washable and easy to maintain.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq6')">Do you ship internationally?</h3>
+        <p id="faq6" style="display:none;">Yes, we offer international shipping. Delivery times and costs vary by location.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq7')">What is your return policy?</h3>
+        <p id="faq7" style="display:none;">We offer a 30-day return policy for unused items with the original tags intact.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq8')">How eco-friendly is GrowWear?</h3>
+        <p id="faq8" style="display:none;">GrowWear is committed to sustainability. We use biodegradable materials and ethical manufacturing processes to minimize our environmental impact.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq9')">Do you offer discounts for bulk purchases?</h3>
+        <p id="faq9" style="display:none;">Yes, we offer special discounts for bulk purchases. Contact our support team for more details.</p>
+    </div>
+    <div class="faq-item">
+        <h3 onclick="toggleFAQ('faq10')">How can I contact customer support?</h3>
+        <p id="faq10" style="display:none;">You can reach us via email at support@growwear.com or through our customer service hotline.</p>
+    </div>
+</section>
+
+    <!-- Feedback Section -->
+    <section id="feedback">
+        <h2>We Value Your Feedback</h2>
+        <form id="feedback-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" required placeholder="Enter your name">
+            
+            <label for="email">Your Email</label>
+            <input type="email" id="email" required placeholder="Enter your email">
+            
+            <label for="message">Your Message</label>
+            <textarea id="message" rows="5" required placeholder="Enter your message"></textarea>
+            
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <div id="feedback-message" class="feedback-message">
+            Thank you for your feedback! Please wait for a minute. Dont click on anything else.
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 GrowWear. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle feature details
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+        }
+    
+        // Toggle FAQ answers
+        function toggleFAQ(id) {
+            const faqAnswer = document.getElementById(id);
+            faqAnswer.style.display = faqAnswer.style.display === 'none' || faqAnswer.style.display === '' ? 'block' : 'none';
+        }
+    
+        // Form submission for feedback
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the usual way
+    
+            // Show thank you message
+            document.getElementById('feedback-message').style.display = 'block';
+    
+            // Log to check the function is triggered
+            console.log('Form submitted, redirecting in 3 seconds...');
+    
+            // Redirect to Thank You page after 3 seconds
+            setTimeout(function() {
+                console.log('Redirecting now...');
+                window.location.href = "thank-you.html"; // Redirect to the Thank You page
+            }, 3000);
+        });
+    </script>
+    
+    
+</body>
+</html>
