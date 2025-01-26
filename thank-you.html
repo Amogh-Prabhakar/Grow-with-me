@@ -80,6 +80,13 @@
             font-size: 18px;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
+            pointer-events: none; /* Initially disable pointer events */
+            opacity: 0.5; /* Dim button initially */
+        }
+
+        .cta-button.enabled {
+            pointer-events: auto; /* Enable pointer events */
+            opacity: 1; /* Brighten button */
         }
 
         .cta-button:hover {
@@ -106,14 +113,6 @@
                 width: 100%;
             }
         }
-
-        .thank-you-img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
-        }
     </style>
 </head>
 <body>
@@ -136,27 +135,19 @@
     </div>
 
     <script>
+        // Get references to progress bar and button
+        const progressBar = document.querySelector('.progress-bar');
+        const returnButton = document.getElementById('return-home-btn');
+
         // Simulate progress bar completion
         setTimeout(function() {
-            document.querySelector('.progress-bar').style.width = '100%';
+            progressBar.style.width = '100%';
         }, 100);
-        
-        // Redirect after 10 seconds if the button isn't clicked
-        setTimeout(function() {
-            const returnButton = document.getElementById('return-home-btn');
-            if (returnButton) {
-                window.location.href = "index.html"; // Redirect to home after 10 seconds
-            }
-        }, 2500);
-        
-        // Add event listener to button for manual redirection
-        const returnButton = document.getElementById('return-home-btn');
-        if (returnButton) {
-            returnButton.addEventListener('click', function() {
-                window.location.href = "index.html"; // Redirect to home page on button click
-            });
-        }
 
+        // Enable button after progress bar animation (3 seconds)
+        setTimeout(function() {
+            returnButton.classList.add('enabled'); // Add enabled class
+        }, 3000);
     </script>
 
 </body>
