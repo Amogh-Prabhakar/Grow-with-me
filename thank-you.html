@@ -115,18 +115,20 @@
     </div>
 
     <script>
-        // Get references to progress bar and button
-        const progressBar = document.getElementById('progress-bar');
-        const returnButton = document.getElementById('return-home-btn');
+        // Ensure the script runs after DOM content is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            const returnButton = document.getElementById('return-home-btn');
 
-        // Trigger progress bar animation after page load
-        setTimeout(() => {
-            progressBar.style.width = '100%';
-        }, 100);
+            // Trigger progress bar animation after a slight delay
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 100);
 
-        // Enable button after animation completes
-        progressBar.addEventListener('transitionend', () => {
-            returnButton.classList.add('enabled');
+            // Enable button after animation completes
+            progressBar.addEventListener('transitionend', () => {
+                returnButton.classList.add('enabled');
+            });
         });
     </script>
 
