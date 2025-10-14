@@ -3,505 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grow With Me - Clothing that Grows with Kids</title>
-    <style>
-        /* Reset some default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Header styles */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #3498db, #9b59b6);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .hero a {
-            background-color: #e74c3c;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-            animation: fadeIn 2.5s ease-in-out;
-        }
-
-        .hero a:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
-        }
-
-        /* About Section */
-        #about {
-            padding: 60px 20px;
-            background-color: #f4f4f4;
-        }
-
-        #about h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #about p {
-            font-size: 18px;
-            color: #555;
-            text-align: justify;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-
-        /* Features Section */
-        #features {
-            padding: 60px 20px;
-            background-color: white;
-        }
-
-        #features h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .feature {
-            background: #3498db;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .feature:hover {
-            transform: scale(1.05);
-            background-color: #2980b9;
-        }
-
-        .feature h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .feature-details {
-            display: none;
-            font-size: 18px;
-            color: #333;
-            background: #ecf0f1;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-
-        /* Testimonials Section */
-        #testimonials {
-            padding: 60px 20px;
-            background-color: #f4f4f4;
-        }
-
-        #testimonials h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px auto;
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .testimonial p {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .testimonial .author {
-            font-weight: bold;
-            color: #3498db;
-        }
-
-        /* FAQ Section */
-        #faq {
-            padding: 60px 20px;
-            background-color: white;
-        }
-
-        #faq h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-        }
-
-        .faq-item h3 {
-            font-size: 20px;
-            cursor: pointer;
-            background: #3498db;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .faq-item h3:hover {
-            background-color: #2980b9;
-        }
-
-        .faq-item p {
-            display: none;
-            font-size: 18px;
-            color: #555;
-            padding: 10px;
-            border-left: 4px solid #3498db;
-        }
-
-        /* Feedback Section */
-        #feedback {
-            padding: 60px 20px;
-            background-color: #ecf0f1;
-        }
-
-        #feedback h2 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #feedback-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #feedback-form label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        #feedback-form input,
-        #feedback-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        #feedback-form button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #feedback-form button:hover {
-            background-color: #2980b9;
-        }
-
-        .feedback-message {
-            display: none;
-            font-size: 18px;
-            color: green;
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        /* Footer styles */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <title>Nexus Digital - Interactive Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Grow With Me</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#feedback">Feedback</a></li>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-text">NEXUS</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">NEXUS</span>
+                <div class="logo-dot"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h2>Welcome to Grow With Me</h2>
-        <p>Revolutionizing kids' clothing with innovation and sustainability.</p>
-        <a href="#about">Learn More</a>
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+            <div class="floating-particles"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Creating Digital</span>
+                <span class="title-line highlight">Experiences</span>
+            </h1>
+            <p class="hero-description">
+                We craft innovative solutions that bridge the gap between creativity and technology,
+                delivering exceptional digital experiences that captivate and inspire.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="explore-btn">
+                    <span>Explore Work</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-secondary" id="contact-btn">
+                    <span>Get In Touch</span>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <h2>About Grow With Me</h2>
-        <p>GrowWear is a revolutionary clothing line designed to grow with your child. Using advanced adaptive fabrics, GrowWear adjusts to your child's changing size, ensuring comfort and sustainability while reducing the need for frequent replacements.</p>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features">
-        <h2>Key Features</h2>
-        <div class="features-list">
-            <div class="feature" onclick="toggleDetails('stretchable-details')">
-                <h3>Stretchable Fabrics</h3>
-                <p>Click to learn more!</p>
-                <div id="stretchable-details" class="feature-details">
-                    Our advanced stretchable fabrics adapt to your child's growth, ensuring a perfect fit at all times.
-                </div>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About Us</h2>
             </div>
-            <div class="feature" onclick="toggleDetails('eco-friendly-details')">
-                <h3>Eco-friendly Materials</h3>
-                <p>Click to learn more!</p>
-                <div id="eco-friendly-details" class="feature-details">
-                    Made from biodegradable fibers, our materials are kind to both your child and the planet.
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>We are digital innovators</h3>
+                    <p>With over a decade of experience in crafting digital solutions, we specialize in creating 
+                    immersive experiences that connect brands with their audiences in meaningful ways.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="250">0</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="98">0</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="feature" onclick="toggleDetails('adjustable-design-details')">
-                <h3>Adjustable Design</h3>
-                <p>Click to learn more!</p>
-                <div id="adjustable-design-details" class="feature-details">
-                    Adjustable straps and waistbands expand to provide a comfortable fit as your child grows.
-                </div>
-            </div>
-            <div class="feature" onclick="toggleDetails('durable-details')">
-                <h3>Durable</h3>
-                <p>Click to learn more!</p>
-                <div id="durable-details" class="feature-details">
-                    Built to last, our clothing withstands wear and tear, providing value for years.
+                <div class="about-visual">
+                    <div class="visual-card">
+                        <div class="card-content">
+                            <i class="fas fa-code"></i>
+                            <h4>Clean Code</h4>
+                        </div>
+                    </div>
+                    <div class="visual-card">
+                        <div class="card-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Responsive</h4>
+                        </div>
+                    </div>
+                    <div class="visual-card">
+                        <div class="card-content">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Performance</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <h2>What Our Customers Say</h2>
-        <div class="testimonial">
-            <p>"Grow With Me has been a game-changer for my family. The clothes are durable and fit perfectly as my child grows."</p>
-            <p class="author">- Sarita, Mother of Two</p>
-        </div>
-        <div class="testimonial">
-            <p>"I love how eco-friendly Grow With Me is. It’s great knowing I’m helping the planet while keeping my kids comfortable."</p>
-            <p class="author">- Rajesh, Eco-conscious Parent</p>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-service="web">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies and best practices.</p>
+                    <div class="service-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="mobile">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and cross-platform mobile applications that deliver exceptional user experiences.</p>
+                    <div class="service-tech">
+                        <span>React Native</span>
+                        <span>Flutter</span>
+                        <span>Swift</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="ui">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful and intuitive designs that enhance user engagement and conversion rates.</p>
+                    <div class="service-tech">
+                        <span>Figma</span>
+                        <span>Adobe XD</span>
+                        <span>Sketch</span>
+                    </div>
+                </div>
+                <div class="service-card" data-service="cloud">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable cloud infrastructure and deployment solutions for modern applications.</p>
+                    <div class="service-tech">
+                        <span>AWS</span>
+                        <span>Docker</span>
+                        <span>Kubernetes</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-        <!-- FAQ Section -->
-<section id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq1')">How does Grow With Me adjust to my child’s size?</h3>
-        <p id="faq1" style="display:none;">GrowWear uses advanced stretchable fabrics and adjustable features to grow with your child.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq2')">Are the materials safe for sensitive skin?</h3>
-        <p id="faq2" style="display:none;">Yes, all our materials are hypoallergenic and safe for sensitive skin.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq3')">What sizes are available?</h3>
-        <p id="faq3" style="display:none;">Grow With Me is designed to fit a wide range of sizes, covering ages 1 to 10 years, with adjustable features to accommodate growth.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq4')">How durable are the clothes?</h3>
-        <p id="faq4" style="display:none;">Our clothes are made with high-quality, durable fabrics that can withstand active use and frequent washing.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq5')">Are the clothes machine washable?</h3>
-        <p id="faq5" style="display:none;">Yes, all Grow With Me products are machine washable and easy to maintain.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq6')">Do you ship internationally?</h3>
-        <p id="faq6" style="display:none;">Yes, we offer international shipping. Delivery times and costs vary by location.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq7')">What is your return policy?</h3>
-        <p id="faq7" style="display:none;">We offer a 30-day return policy for unused items with the original tags intact.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq8')">How eco-friendly is Grow With Me?</h3>
-        <p id="faq8" style="display:none;">Grow With Me is committed to sustainability. We use biodegradable materials and ethical manufacturing processes to minimize our environmental impact.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq9')">Do you offer discounts for bulk purchases?</h3>
-        <p id="faq9" style="display:none;">Yes, we offer special discounts for bulk purchases. Contact our support team for more details.</p>
-    </div>
-    <div class="faq-item">
-        <h3 onclick="toggleFAQ('faq10')">How can I contact customer support?</h3>
-        <p id="faq10" style="display:none;">You can reach us via email at support@growwear.com or through our customer service hotline.</p>
-    </div>
-</section>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Portfolio</h2>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>E-Commerce Platform</h4>
+                            <p>Full-stack web application</p>
+                            <button class="view-btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Fitness Tracker App</h4>
+                            <p>React Native mobile app</p>
+                            <button class="view-btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Brand Identity</h4>
+                            <p>Complete branding solution</p>
+                            <button class="view-btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Dashboard Analytics</h4>
+                            <p>Data visualization platform</p>
+                            <button class="view-btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Social Media App</h4>
+                            <p>Cross-platform application</p>
+                            <button class="view-btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Website Redesign</h4>
+                            <p>UI/UX improvement project</p>
+                            <button class="view-btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Feedback Section -->
-    <section id="feedback">
-        <h2>We Value Your Feedback</h2>
-        <form id="feedback-form">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" required placeholder="Enter your name">
-            
-            <label for="email">Your Email</label>
-            <input type="email" id="email" required placeholder="Enter your email">
-            
-            <label for="message">Your Message</label>
-            <textarea id="message" rows="5" required placeholder="Enter your message"></textarea>
-            
-            <button type="submit">Submit Feedback</button>
-        </form>
-        <div id="feedback-message" class="feedback-message">
-            Thank you for your feedback! Please wait for a minute. Don't click on anything else.
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's start a conversation</h3>
+                    <p>Ready to transform your digital presence? We'd love to hear about your project and discuss how we can bring your vision to life.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@nexusdigital.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Digital Street, Tech City</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Grow With Me. All Rights Reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NEXUS</span>
+                    <p>Creating digital experiences that matter.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nexus Digital. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // Toggle feature details
-        function toggleDetails(id) {
-            const details = document.getElementById(id);
-            details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
-        }
-    
-        // Toggle FAQ answers
-        function toggleFAQ(id) {
-            const faqAnswer = document.getElementById(id);
-            faqAnswer.style.display = faqAnswer.style.display === 'none' || faqAnswer.style.display === '' ? 'block' : 'none';
-        }
-    
-        // Form submission for feedback
-        document.getElementById('feedback-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting the usual way
-    
-            // Show thank you message
-            document.getElementById('feedback-message').style.display = 'block';
-    
-            // Log to check the function is triggered
-            console.log('Form submitted, redirecting in 3 seconds...');
-    
-            // Redirect to Thank You page after 3 seconds
-            setTimeout(function() {
-                console.log('Redirecting now...');
-                window.location.href = "thank-you.html"; // Redirect to the Thank You page
-            }, 3000);
-        });
-    </script>
-    
-    
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
